@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="sketch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function(){
+			$("#lifespanOutput").text(sim.vars.lifespan);
+			$("#lifespanRange").val(sim.vars.lifespan);
+  			$("#lifespanRange").change(function(){
+   				var newval=$(this).val();
+    			$("#lifespanOutput").text(newval);
+    			sim.vars.lifespan = newval;
+    			console.log("Adjust ant lifespan to " + sim.vars.lifespan + " steps");
+  			});
+
+
+  			$("#sightOutput").text(sim.vars.sight);
+			$("#sightRange").val(sim.vars.sight);
+  			$("#sightRange").change(function(){
+   				var newval=$(this).val();
+    			$("#sightOutput").text(newval);
+    			sim.vars.sight = newval;
+    			console.log("Adjust ant sight to " + sim.vars.sight + " pixels");
+  			});
+
+			$("#foodPheremoneDecayOutput").text(sim.vars.foodPheremoneDecay);
+			$("#foodPheremoneDecayRange").val(sim.vars.foodPheremoneDecay * 1000.0);
+  			$("#foodPheremoneDecayRange").change(function(){
+   				var newval=$(this).val() / 1000.0;
+    			$("#foodPheremoneDecayOutput").text(newval);
+    			sim.vars.foodPheremoneDecay = newval;
+    			console.log("Adjust food pheremone decay to " + sim.vars.foodPheremoneDecay);
+  			});
+
+  			$("#homePheremoneDecayOutput").text(sim.vars.homePheremoneDecay);
+			$("#homePheremoneDecayRange").val(sim.vars.homePheremoneDecay * 1000.0);
+  			$("#homePheremoneDecayRange").change(function(){
+   				var newval=$(this).val() / 1000.0;
+    			$("#homePheremoneDecayOutput").text(newval);
+    			sim.vars.homePheremoneDecay = newval;
+    			console.log("Adjust home pheremone decay to " + sim.vars.homePheremoneDecay);
+  			});
+
+		});
+	</script>
+    <title>Ant Simulator</title>
+  </head>
+  <body>
+  <h2>Ant Simulator</h2>
+  <p>
+     Click on the canvas to add food for the ants.
+  </p>
+  <div id="sliders">
+  	<div id="lifespan">
+  		Ant lifespan: <span id="lifespanOutput">x</span> steps
+  		<br/>
+  		<input type="range" min="0" max="5000" value="2000" class="slider" id="lifespanRange">
+  	</div>
+  	<div id="sight">
+  		Ant vision: <span id="sightOutput">x</span> pixels
+  		<br/>
+  		<input type="range" min="0" max="5" value="3" class="slider" id="sightRange">
+  	</div>
+  	<div id="foodPheremoneDecay">
+  		Food pheremone decay: <span id="foodPheremoneDecayOutput">x</span>
+  		<br/>
+  		<input type="range" min="950" max="999" value="990" class="slider" id="foodPheremoneDecayRange">
+  	</div>
+  	<div id="homePheremoneDecay">
+  		Home pheremone decay: <span id="homePheremoneDecayOutput">x</span>
+  		<br/>
+  		<input type="range" min="950" max="999" value="990" class="slider" id="homePheremoneDecayRange">
+  	</div>
+
+  </div>
+  </body>
+</html>
